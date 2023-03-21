@@ -1,0 +1,29 @@
+﻿<Window x:Class="PR482017_Dimitrije_Vukovic.ReadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR482017_Dimitrije_Vukovic"
+        mc:Ignorable="d"
+        Title="" Height="650" Width="600" Icon="soljica.png">
+    <Grid Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
+
+        <Label x:Name="LabelNaziv" Content="" HorizontalAlignment="Left" Margin="87,68,0,0" VerticalAlignment="Top" Width="232" Height="134" FontSize="36" FontFamily="Forte" FontWeight="Bold"/>
+        <RichTextBox Name="rtbEditor" Width="572"  Margin="10,230,0,135" HorizontalAlignment="left" FontSize="20" IsReadOnly="True"/>
+        <StatusBar Margin="10,510,10,100">
+            <StatusBarItem Background="green" Width="572" RenderTransformOrigin="0.52,-6.669" Margin="0,-8,0,0">
+                <TextBox x:Name="BrRtextBox" IsReadOnly="True" TextWrapping="Wrap" Text="" Width="100" BorderBrush="Transparent" Background="Transparent"/>
+            </StatusBarItem>
+            <Separator/>
+        </StatusBar>
+        <Image x:Name="ImageDodaj" HorizontalAlignment="Left" Height="178" Margin="344,24,0,0" VerticalAlignment="Top" Width="238"/>
+        <Button x:Name="ButtonIzlaz" Content="Izlaz" HorizontalAlignment="Left" Margin="440,550,0,0" VerticalAlignment="Top" Width="115" Height="39" FontSize="18" BorderBrush="#FFFFFCFC" Foreground="Black" FontFamily="Engravers MT" FontWeight="Bold" Click="ButtonIzlaz_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF989595" Offset="0"/>
+                    <GradientStop Color="#FFECECEC" Offset="0.505"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

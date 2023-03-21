@@ -1,0 +1,87 @@
+﻿<Window x:Class="PR482017_Dimitrije_Vukovic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR482017_Dimitrije_Vukovic"
+        mc:Ignorable="d"
+        Title="Brendovi kafa" SizeToContent="WidthAndHeight" Height="600" Width="800" WindowStyle="None"  MouseLeftButtonDown="Window_MouseLeftButtonDown" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Canvas Height="600" Width="800">
+
+            <Path Stroke="LightGoldenrodYellow" StrokeThickness="9" Height="600" Stretch="Fill" Width="800">
+                <Path.Fill>
+                    <ImageBrush ImageSource="soljica.png"/>
+                </Path.Fill>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="677, 5">
+                            <ArcSegment Size="250,65" RotationAngle="180"  Point="0, 1" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="210,900" RotationAngle="180"  Point="125, 415" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="145,50" RotationAngle="180"  Point="535, 427" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="180,200" RotationAngle="180"  Point="579, 365" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="59,90" RotationAngle="180"  Point="674, 321" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="300,230" RotationAngle="180"  Point="800, 150" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="90,110" RotationAngle="180"  Point="676, 35" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="100,180" RotationAngle="180"  Point="677, 5" SweepDirection="Counterclockwise"/>
+                        </PathFigure>
+                        <PathFigure StartPoint="656, 149">
+                            <ArcSegment Size="170,100" RotationAngle="180"  Point="708, 127" SweepDirection="Counterclockwise"/>
+                            <ArcSegment Size="170,100" RotationAngle="180"  Point="631, 240" SweepDirection="clockwise"/>
+                            <ArcSegment Size="300,600" RotationAngle="180"  Point="660, 146" SweepDirection="Counterclockwise"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <DataGrid x:Name="Tabela" HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="419" ItemsSource="{Binding kafe}" IsReadOnly="True" AutoGenerateColumns="False" Canvas.Left="127" Canvas.Top="204" RenderTransformOrigin="0.495,0.507">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Index" Binding="{Binding Index}" Width="*" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"/>
+                    <DataGridTemplateColumn Header="Slika" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path = Slika}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" MaxHeight="120"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" Width="*" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14"/>
+                    <DataGridTemplateColumn Header="Opcije" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <Button x:Name="ButtonProcitaj" Content="Pročitaj" Margin="5,5,5,5" FontSize="18" Click="ButtonProcitaj_Click" FontFamily="Times New Roman" FontWeight="Bold">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF8B8B8C" Offset="0"/>
+                                                <GradientStop Color="White" Offset="0.687"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="ButtonIzmeni" Content="Izmeni" Margin="5,5,5,5"  FontSize="18" Click="ButtonIzmeni_Click" FontFamily="Times New Roman" FontWeight="Bold">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF8B8B8C" Offset="0"/>
+                                            <GradientStop Color="White" Offset="0.687"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                    </Button>
+                                    <Button x:Name="ButtonObrisi" Content="Obriši" Margin="5,5,5,5"  FontSize="18" Click="ButtonObrisi_Click" FontFamily="Times New Roman" FontWeight="Bold">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF8B8B8C" Offset="0"/>
+                                                <GradientStop Color="White" Offset="0.687"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="buttonDodaj" Content="Dodaj brend" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Height="36" FontSize="18" Canvas.Left="243" Canvas.Top="109" Click="buttonDodaj_Click" BorderBrush="White" FontFamily="Engravers MT" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"/>
+            <Button x:Name="buttonIzlaz" Content="Izlaz" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Height="36" FontSize="18" Canvas.Left="243" Canvas.Top="521" Click="buttonIzlaz_Click" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" FontFamily="Engravers MT" FontWeight="Bold" BorderBrush="White"/>
+        </Canvas>
+    </Grid>
+</Window>
